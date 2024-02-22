@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <div id="listaTareas"></div>
+    <input type="text" id="tarea">
+    <button onclick="agregarTareas()">Agregar</button>
+    <button onclick="mostrarTareas()">Mostrar</button>
+    <button onclick="eliminarTareas()">Eliminar</button>
+    <script>
+        var tareas= [];
+        function agregarTareas(){
+            var tarea= document.getElementById('tarea').value;
+            tarea.value = '';
+            tareas.push(tarea);
+            mostrarTareas();
+        }
+        function eliminarTareas(index){
+            tareas.splice(index, 1);
+            mostrarTareas();
+        }
+        function mostrarTareas(){
+            var listaTareas = document.getElementById('listaTareas');
+            listaTareas.innerHTML = '';
+            tarea.value = '';
+            for (var i = 0; i < tareas.length; i++) {
+                listaTareas.innerHTML += '<div>' + tareas[i] + '<button onclick="eliminarTareas(' + i + ')">Eliminar</button></div>';
+            }
+        };
+
+    </script>
+</body>
+</html>
