@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <h1>Entradas</h1>
+    <input type="number" id="numeroUsuario" min="1" max="100">
+    <button id="botonAdivinar">Adivinar</button>
+    <div id="entrada"></div>
+    <script>
+        var numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+        var intentos = 1;
+        const entrada = document.getElementById('entrada');
+        const botonAdivinar = document.getElementById('botonAdivinar');
+        const numeroUsuario = document.getElementById('numeroUsuario');
+        function adivinaNumero() {
+            var numero = numeroUsuario.value;
+            intentos++;
+            if (numero > numeroAleatorio) {
+                entrada.textContent = "El número es menor";
+            } else if (numero < numeroAleatorio) {
+                entrada.textContent = "El número es mayor";
+            } else {
+                entrada.textContent = "¡Has adivinado el número en " + intentos + " intentos!";
+            }
+        }
+        botonAdivinar.addEventListener('click', adivinaNumero);
+    </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <h1>Entradas</h1>
+    <div id="entrada"></div>
+    <script>
+        var numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+        var intentos = 1;
+        const entrada = document.getElementById('entrada');
+        function adivinaNumero(numeroUsuario) {
+            intentos++;
+            if (numeroUsuario>numeroAleatorio) {
+                return "El número es menor";
+            }else if (numeroUsuario<numeroAleatorio) {
+                return "El número es mayor";
+            }else {
+                return "¡Has adivinado el número en " + intentos + " intentos!";
+            }
+        }
+    </script>
+</body>
+</html> -->

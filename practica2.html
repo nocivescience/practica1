@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+    <div id="reloj"></div>
+    <script>
+        const relojEl = document.getElementById('reloj');
+        function reloj() {
+            var fecha = new Date();
+            var horas = fecha.getHours();
+            var minutos = fecha.getMinutes();
+            var segundos = fecha.getSeconds();
+            var dia = fecha.getDate();
+            var mes = fecha.getMonth() + 1;
+            var year = fecha.getFullYear();
+            var ampm;
+
+            if (horas >= 12) {
+                horas = horas - 12;
+                ampm = 'PM';
+            } else {
+                ampm = 'AM';
+            }
+            return {
+                horas,
+                minutos,
+                segundos,
+                dia,
+                mes,
+                year,
+                ampm
+            }
+        }
+        class Reloj{
+            constructor(horas, minutos, segundos, dia, mes, year, ampm){
+                this.horas = horas;
+                this.minutos = minutos;
+                this.segundos = segundos;
+                this.dia = dia;
+                this.mes = mes;
+                this.year = year;
+                this.ampm = ampm;
+            }
+            showTime(){
+                const horasDiv = document.createElement('div');
+                horasDiv.textContent = this.horas;
+                relojEl.appendChild(horasDiv);
+                const minutosDiv = document.createElement('div');
+                minutosDiv.textContent = this.minutos;
+                relojEl.appendChild(minutosDiv);
+                const segundosDiv = document.createElement('div');
+                segundosDiv.textContent = this.segundos;
+                relojEl.appendChild(segundosDiv);
+                const diaDiv = document.createElement('div');
+                diaDiv.textContent = this.dia;
+                relojEl.appendChild(diaDiv);
+                const mesDiv = document.createElement('div');
+                mesDiv.textContent = this.mes;
+                relojEl.appendChild(mesDiv);
+                const yearDiv = document.createElement('div');
+                yearDiv.textContent = this.year;
+                relojEl.appendChild(yearDiv);
+                const ampmDiv = document.createElement('div');
+                ampmDiv.textContent = this.ampm;
+                relojEl.appendChild(ampmDiv);
+            }
+        }
+        const fecha = reloj();
+        const reloj1 = new Reloj(fecha.horas, fecha.minutos, fecha.segundos, fecha.dia, fecha.mes, fecha.year, fecha.ampm);
+        setInterval(() => {
+            relojEl.innerHTML = '';
+            const fecha = reloj();
+            const reloj1 = new Reloj(fecha.horas, fecha.minutos, fecha.segundos, fecha.dia, fecha.mes, fecha.year, fecha.ampm);
+            reloj1.showTime();
+        }, 1000);
+    </script>
+</body>
+</html>
